@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить книгу</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <header class="text-center mt-4">
+        <h1>Добавить новую книгу</h1>
+    </header>
+    <main class="mt-4">
+        <form action="/save" method="post" class="mb-4">
+            <div class="mb-3">
+                <label for="isbn" class="form-label">ISBN:</label>
+                <input type="text" id="isbn" name="isbn" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Название книги:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label">Жанр:</label>
+                <input type="text" id="genre" name="genre" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Описание:</label>
+                <textarea id="description" name="description" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Автор:</label>
+                <input type="text" id="author" name="author" class="form-control" required>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Сохранить книгу</button>
+            </div>
+        </form>
+    </main>
+    <footer class="text-center mt-4">
+        <p>&copy; 2024 Библиотека</p>
+    </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

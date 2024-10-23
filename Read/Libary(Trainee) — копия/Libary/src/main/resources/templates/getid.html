@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Поиск книги</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+  <h1 class="text-center">Поиск книги по ID</h1>
+  <form action="/getid" method="post" class="mt-4">
+    <div class="mb-3">
+      <label for="bookID" class="form-label">Введите ID книги:</label>
+      <input type="number" id="bookID" name="id" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Найти</button>
+  </form>
+
+  <div th:if="${book != null}" class="mt-4">
+    <h2>Информация о книге</h2>
+    <table class="table table-bordered mt-3">
+      <tr>
+        <th>ID</th>
+        <td th:text="${book.id}"></td>
+      </tr>
+      <tr>
+        <th>ISBN</th>
+        <td th:text="${book.isbn}"></td>
+      </tr>
+      <tr>
+        <th>Название</th>
+        <td th:text="${book.name}"></td>
+      </tr>
+      <tr>
+        <th>Жанр</th>
+        <td th:text="${book.genre}"></td>
+      </tr>
+      <tr>
+        <th>Описание</th>
+        <td th:text="${book.description}"></td>
+      </tr>
+      <tr>
+        <th>Автор</th>
+        <td th:text="${book.author}"></td>
+      </tr>
+    </table>
+    <a href="/books" class="btn btn-secondary">Вернуться к списку</a>
+  </div>
+
+  <div th:if="${errorMessage != null}" class="mt-4">
+    <div class="alert alert-danger" role="alert" th:text="${errorMessage}">Книга не найдена.</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

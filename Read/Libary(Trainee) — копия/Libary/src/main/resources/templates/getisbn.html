@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск книги по ISBN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="text-center">Поиск книги по ISBN</h1>
+
+    <!-- Форма для ввода ISBN -->
+    <form action="/getisbn" method="post" class="mt-4">
+        <div class="mb-3">
+            <label for="isbn" class="form-label">Введите ISBN книги:</label>
+            <input type="text" id="isbn" name="isbn" class="form-control" placeholder="ISBN" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Найти</button>
+    </form>
+
+
+    <div class="mt-4">
+        <h2>Информация о книге:</h2>
+        <div th:if="${book != null}">
+            <p><strong>Название:</strong> <span th:text="${book.name}"></span></p>
+            <p><strong>Автор:</strong> <span th:text="${book.author}"></span></p>
+            <p><strong>ISBN:</strong> <span th:text="${book.isbn}"></span></p>
+            <p><strong>Жанр:</strong> <span th:text="${book.genre}"></span></p>
+            <p><strong>Описание:</strong> <span th:text="${book.description}"></span></p>
+            <a href="/books" class="btn btn-secondary mt-3">Вернуться к списку</a> <!-- Кнопка для возврата -->
+        </div>
+        <div th:if="${book == null}">
+            <p class="text-danger">Книга не найдена.</p>
+        </div>
+    </div>
+
+
+    <div th:if="${errorMessage != null}" class="mt-4">
+        <div class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
